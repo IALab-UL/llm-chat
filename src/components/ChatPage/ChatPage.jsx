@@ -3,27 +3,35 @@ import { Box, TextField, Button, Grid } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import Message from "../Message/Message";
 import axios from 'axios';
+import agents from '../../config/agents.json';
 
+function makeRequest(origin, target){
+
+}
 
 const ChatPage = () => {
     const [input, setInput] = useState("");
-    const [messages, setMessages] = useState(["hola"]);
-    const [messageids, setMessageId] = useState(1);
+    const [messages, setMessages] = useState([]);
     const [query, setQuery] = useState(false);
+    
 
     useEffect(() => {
+        const origin = agents[Math.floor(Math.random() * 3)]
+        
         if (messages.length > 0) {
-            axios.post('http://localhost:1234/v1/chat/completions', {
+            axios.post(`http://${origin.url}:${origin.port}/v1/chat/completions`, {
                 "messages": [
-                    { "role": "system", "content": "Always answer in rhymes." },
-                    { "role": "user", "content": messages[messages.length - 1].text }
+                    { "role": "system", "content": `${origin.role}`+ `${origin.limitations}` },
+                    { "role": "user", "content": messages[messages.length - 1].text}
                 ],
                 "temperature": 0.7,
-                "max_tokens": -1,
+                "max_tokens": origin.max_tokens,
                 "stream": false
             })
                 .then(response => {
-                    setMessages([...messages, { id: response.data.created, text: response.data.choices[0].message.content, sender: 'bot' }]);
+                    setMessages([...messages, { id: response.data.created, text: response.data.choices[0].message.content, sender: 'bot', user:origin }]);
+                    setQuery(!query);
+                    console.log(messages)
                 })
                 .catch(error => {
                     console.error(error);
@@ -36,11 +44,9 @@ const ChatPage = () => {
     const handleSend = () => {
         if (input.trim() !== "") {
 
-            setMessages([...messages, { id: messageids, text: input, sender: 'user' }]);
-            setMessageId(messageids + 1);
+            setMessages([...messages, { id: 1, text: input, sender: 'user' }]);
+            
             setQuery(!query);
-            console.log(messages);
-            // 
             setInput("");
 
         }

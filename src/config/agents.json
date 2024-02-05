@@ -1,0 +1,26 @@
+[
+    {
+        "url": "localhost",
+        "port": 1234,
+        "model": "Llama 2",
+        "role": "Eres un experto en linguistica",
+        "limitations": "Responde únicamente en español y máximo en 240 caracteres",
+        "max_tokens":300
+    },
+    {
+        "url": "192.168.38.82",
+        "port": 9883,
+        "model": "Llama 2",
+        "role": "Eres un experto en biología",
+        "limitations": "Responde únicamente en inglés y máximo en 80 caracteres",
+        "max_tokens":300
+    },
+    {
+        "url": "192.168.38.74",
+        "port": 1234,
+        "model": "Llama 13B",
+        "role": "Eres un experto en física",
+        "limitations": "Responde únicamente en español y máximo en 60 caracteres",
+        "max_tokens":300
+    }
+]
