@@ -3,24 +3,27 @@
         "url": "localhost",
         "port": 1234,
         "model": "Llama 2",
-        "role": "Eres un experto en linguistica",
-        "limitations": "Responde únicamente en español y máximo en 240 caracteres",
-        "max_tokens":300
+        "name": "Esta PC",
+        "role": "Especialista en el campo de la biología",
+        "limitations": "Responde únicamente en español y máximo en una oración",
+        "max_tokens":100
     },
     {
-        "url": "192.168.38.82",
-        "port": 9883,
+        "url": "localhost",
+        "port": 1234,
         "model": "Llama 2",
-        "role": "Eres un experto en biología",
-        "limitations": "Responde únicamente en inglés y máximo en 80 caracteres",
-        "max_tokens":300
+        "name": "La PC de en frente",
+        "role": "Especialista en el campo de la Informática",
+        "limitations": "Responde únicamente en inglés y máximo en una oración",
+        "max_tokens":200
     },
     {
-        "url": "192.168.38.74",
+        "url": "localhost",
         "port": 1234,
         "model": "Llama 13B",
-        "role": "Eres un experto en física",
-        "limitations": "Responde únicamente en español y máximo en 60 caracteres",
-        "max_tokens":300
+        "name": "La PC de atrás",
+        "role": "Especialista en el campo de la Física",
+        "limitations": "Responde únicamente en español y máximo en una oración",
+        "max_tokens":200
     }
 ]
